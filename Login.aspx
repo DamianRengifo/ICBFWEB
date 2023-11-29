@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.min.css" type="text/css"/>
 </head>
 <body>
-    <div>
+    <div CssClass="h-100vh ">
         <form id="form1" runat="server">
         <div>
-            <asp:Login ID="Login1" runat="server" CssClass="bg-sucess" >
+            <asp:Login ID="Login1" runat="server" CssClass="bg-success mx-auto" >
                 <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
                 <LoginButtonStyle CssClass="btn btn-light rounded-pill btn-outline-primary"/>
                 <TextBoxStyle Font-Size="0.8em" />
