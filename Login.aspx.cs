@@ -14,24 +14,30 @@ namespace ICBFWEB2
 
         }
 
-        protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
+        protected void btnIniciar_Click(object sender, EventArgs e)
         {
             modelo.UsuarioDAO usuarioDAO = new modelo.UsuarioDAO();
-            string docUser = (Login1.UserName).ToString();
-            string password = (Login1.Password).ToString();
+            string docUser = Username.Text;
+            string password = Password.Text;
             modelo.usuarios usuario = usuarioDAO.login(docUser, password);
-
-            if (usuario != null)
+            if (Username != null && Password != null)
             {
-                Session["idUsuario"] = usuario.idUsuario;
-                Session["nombre"] = usuario.nombre;
-                Session["fk_idRol"] = usuario.fk_idRol;
-                lblMensaje.Text = "Bienvenido " + usuario.nombre;
+                if (usuario != null)
+                {
+                    Session["idUsuario"] = usuario.idUsuario;
+                    Session["nombre"] = usuario.nombre;
+                    Session["fk_idRol"] = usuario.fk_idRol;
+                    lblMensaje.Text = "Bienvenido " + usuario.nombre;
+                }
+                else
+                {
+                    lblMensaje.Text = "Usuario o la contraseña son incorrectas";
+                }
             }
-            else {
-                lblMensaje.Text = "Usuario o la contraseña son incorrectas";
+            else
+            {
+                lblMensaje.Text = "Alguno de los campos estan vacios";
             }
-
         }
     }
 }

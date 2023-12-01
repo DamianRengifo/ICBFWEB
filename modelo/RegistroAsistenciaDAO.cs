@@ -31,6 +31,18 @@ namespace ICBFWEB2.modelo
             bd.SubmitChanges();
         }
 
+        public List<registro_asistencia> asistenciaSemanal(DateTime fechaInicio, DateTime fechaFinal) {
+            var asistencia = (from j in bd.registro_asistencia
+                              where fechaInicio >= j.fechaAsistencia && fechaFinal <= j.fechaAsistencia
+                              select j).ToList();
+            return asistencia;
+        }
+
+        public List<registro_asistencia> asistenciaEnfermedad() {
+            var resultado = (from j in bd.registro_asistencia where j.fk_idEstado == 1002 select j).ToList();
+            return resultado;
+        }
+
         public void actualizar(registro_asistencia registroAsistencia)
         {
             registro_asistencia registro = (from j in bd.registro_asistencia where j.idRegAsistencia == registroAsistencia.idRegAsistencia select j).FirstOrDefault();
