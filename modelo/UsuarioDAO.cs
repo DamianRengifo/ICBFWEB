@@ -108,16 +108,21 @@ namespace ICBFWEB2.modelo
             return (from j in bd.usuarios where j.fk_idRol == 3 select j).ToList();
         }
 
-        public usuarios login(string documento, string clave) {
-            usuarios usuario = new usuarios();
+        public usuarios login(string documento, string clave)
+        {
+            usuarios usuario = null; // inicializamos con null
+
             var login = (from j in bd.login(documento, clave) select j);
-            foreach (var userLogeado in login) {
+            foreach (var userLogeado in login)
+            {
+                usuario = new usuarios(); // inicializamos el usuario si encontramos una coincidencia
                 usuario.idUsuario = userLogeado.idUsuario;
                 usuario.nombre = userLogeado.nombre;
                 usuario.clave = userLogeado.clave;
                 usuario.fk_idRol = userLogeado.fk_idRol;
             }
-            return usuario;
+
+            return usuario; // retornamos el usuario encontrado o null si no hay coincidencias
         }
     }
 }

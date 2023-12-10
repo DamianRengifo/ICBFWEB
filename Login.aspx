@@ -9,9 +9,11 @@
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.min.css" type="text/css"/>
 </head>
 <body>
-    <div class="vh-100 vw-100 d-flex-column align-items-center justify-content-center">
-        <div class="rounded-3 bg-success w-25 mx-auto my-5 shadow-lg">
-            <form id="form1" runat="server" class="my-3">
+    <form id="form1" runat="server" class="">
+
+        <div class="vh-100 vw-100 d-flex-column align-items-center justify-content-center">
+            <div class="rounded-3 bg-success w-25 mx-auto my-5 shadow-lg">
+            
                 <div class="h-50 mx-auto gap-2 h-50 w-100 d-flex flex-column align-align-items-center justify-content-center">
                     <div class="bg-light rounded-3 text-center w-100">
                         <h1 class="text-success fw-bold">Iniciar Sesion</h1>
@@ -24,11 +26,18 @@
                     <asp:Button ID="btnIniciar" runat="server" Text="Button" CssClass="btn btn-light btn-outline-primary mx-auto rounded-pill w-75 mb-3 fs-3" OnClick="btnIniciar_Click" />
                    
                 </div>
-            </form>
-        </div>
-        <asp:Label ID="lblMensaje" runat="server" CssClass="text-danger" Text=""></asp:Label>
-    </div>
+           
+            </div>
 
+                <asp:Panel ID="mensaje" runat="server"  CssClass="bg-success rounded-4 mx-auto w-75 shadow-lg h-75 d-flex justify-content-center align-items-center flex-column position-absolute top-50 start-50 translate-middle" Visible="False">
+                    <asp:Image ID="Image1" runat="server" CssClass="mx-auto w-25 h-75 " ImageUrl="~/Resources/ICBF_logo.png" />
+                <asp:Label ID="lblMensaje" runat="server" CssClass="text-light display-3 fw-bold text-center my-3 " Text=""></asp:Label>
+                    <asp:Button ID="btnCerrar" runat="server" Text="Cerrar" CssClass="btn btn-danger btn-outline-light rounded-pill mx-auto w-50 mb-3" OnClick="btnCerrar_Click" />
+                </asp:Panel> 
+            <asp:Label ID="lblError" CssClass="text-center text-danger fs-2" runat="server"></asp:Label>
+        </div>
+       
+         </form>
     <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
