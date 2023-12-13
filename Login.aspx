@@ -23,7 +23,7 @@
                     <asp:Label ID="Label2" runat="server" Text="Contraseña:"  CssClass="text-center mx-auto fs-3 text-light"></asp:Label>
                     <asp:TextBox ID="Password" runat="server" CssClass="form-control w-75 mx-auto mb-2" type="password"></asp:TextBox>
                     <br/>
-                    <asp:Button ID="btnIniciar" runat="server" Text="Button" CssClass="btn btn-light btn-outline-primary mx-auto rounded-pill w-75 mb-3 fs-3" OnClick="btnIniciar_Click" />
+                    <asp:Button ID="btnIniciar" runat="server" Text="Iniciar Session" CssClass="btn btn-light btn-outline-primary mx-auto rounded-pill w-75 mb-3 fs-3" OnClick="btnIniciar_Click" />
                    
                 </div>
            

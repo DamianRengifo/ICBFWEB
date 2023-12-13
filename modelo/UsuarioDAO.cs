@@ -124,5 +124,9 @@ namespace ICBFWEB2.modelo
 
             return usuario; // retornamos el usuario encontrado o null si no hay coincidencias
         }
+
+        public String consultarId(String nomUser) {
+            return (from j in bd.usuarios where j.nombre == nomUser select j.idUsuario).FirstOrDefault().ToString();    
+        }
     }
 }

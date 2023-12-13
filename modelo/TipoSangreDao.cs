@@ -12,5 +12,8 @@ namespace ICBFWEB2.modelo
         {
             return (from j in bd.tipo_sangre select j).ToList();
         }
+        public String consultarId(String nomTipSangre) {
+            return (from j in bd.tipo_sangre where j.nomTipoSangre == nomTipSangre select j.idTipoSangre).FirstOrDefault().ToString();
+        }
     }
 }

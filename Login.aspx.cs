@@ -22,6 +22,7 @@ namespace ICBFWEB2
             modelo.usuarios usuario = usuarioDAO.login(docUser, password);
             if (!string.IsNullOrWhiteSpace(Username.Text) && !string.IsNullOrWhiteSpace(Password.Text))
             {
+              
                 if (usuario != null)
                 {
                     var sesionNom = Session["nombre"] = usuario.nombre;
