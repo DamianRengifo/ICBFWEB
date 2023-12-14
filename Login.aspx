@@ -8,7 +8,7 @@
     <title>Login</title>
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.min.css" type="text/css"/>
 </head>
-<body>
+<body style="background-image: url(Resources/57563186-9dc6-4d1a-afd6-6a6ce4a76c06.jpeg)">
     <form id="form1" runat="server" class="">
 
         <div class="vh-100 vw-100 d-flex-column align-items-center justify-content-center">
@@ -34,7 +34,7 @@
                 <asp:Label ID="lblMensaje" runat="server" CssClass="text-light display-3 fw-bold text-center my-3 " Text=""></asp:Label>
                     <asp:Button ID="btnCerrar" runat="server" Text="Cerrar" CssClass="btn btn-danger btn-outline-light rounded-pill mx-auto w-50 mb-3" OnClick="btnCerrar_Click" />
                 </asp:Panel> 
-            <asp:Label ID="lblError" CssClass="text-center text-danger fs-2" runat="server"></asp:Label>
+            <asp:Label ID="lblError" CssClass="text-center text-danger fs-2 bg-white ms-5 rounded-2" runat="server"></asp:Label>
         </div>
        
          </form>

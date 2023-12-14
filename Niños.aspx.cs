@@ -1,6 +1,7 @@
 ﻿using ICBFWEB2.modelo;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -101,9 +102,10 @@ namespace ICBFWEB2
             niños.fk_idTipSangre = int.Parse(ddlTipSangre.SelectedValue);
             niños.fk_idAcudiente = int.Parse(ddlAcudiente.SelectedValue);
             niños.fk_idJardin = int.Parse(ddlJardin.SelectedValue);
-            niños.fechaNac = cldCalendar.SelectedDate;
+            niños.fechaNac =DateTime.Parse(txtFecNacimiento.Text);
             niñosDao.registrarNiños(niños);
             cargarGrilla();
+            limpiarCampos();
 
         }
 
@@ -119,10 +121,11 @@ namespace ICBFWEB2
             PanelConsulta.Visible = true;
         }
         public void limpiarCampos() {
-            txtNombre.Text = String.Empty;
-            txtIdentificacion.Text = String.Empty;
-            txtDireccion.Text = String.Empty;
-            txtTelefono.Text = String.Empty;
+            txtNombre.Text = "";
+            txtIdentificacion.Text = "";
+            txtDireccion.Text = "";
+            txtTelefono.Text = "";
+            txtFecNacimiento.Text = "";
         }
 
      
@@ -140,13 +143,14 @@ namespace ICBFWEB2
 
             if(e.CommandName == "editar")
             {
-                modelo.niños niños = new modelo.niños();
-                modelo.NiñosDAO niñosDao = new modelo.NiñosDAO();
                 modelo.CiudadDAO ciudadDAO = new modelo.CiudadDAO();
                 modelo.EpsDAO epsDao = new modelo.EpsDAO();
                 modelo.TipoSangreDao tipoSangreDao = new modelo.TipoSangreDao();
                 modelo.UsuarioDAO usuarioDAO = new modelo.UsuarioDAO();
                 modelo.RegistroJardinDAO jardinDAO = new modelo.RegistroJardinDAO();
+                string fechaGridView = gdvNiños.Rows[index].Cells[10].Text; 
+                
+                DateTime fechaConvertida = DateTime.ParseExact(fechaGridView, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
                 PanelRegistro.Visible = true;
                 idNiño = int.Parse(gdvNiños.Rows[index].Cells[0].Text);
@@ -159,7 +163,7 @@ namespace ICBFWEB2
                 ddlTipSangre.SelectedValue = tipoSangreDao.consultarId(gdvNiños.Rows[index].Cells[7].Text);
                 ddlAcudiente.SelectedValue = usuarioDAO.consultarId(gdvNiños.Rows[index].Cells[8].Text);
                 ddlJardin.SelectedValue = jardinDAO.consultarId(gdvNiños.Rows[index].Cells[9].Text);
-                cldCalendar.SelectedDate = DateTime.Parse(gdvNiños.Rows[index].Cells[10].Text);
+                txtFecNacimiento.Text = fechaConvertida.ToString("yyyy-MM-dd");
                 PanelConsulta.Visible = false;
             }
         }
@@ -178,11 +182,12 @@ namespace ICBFWEB2
             niños.fk_idTipSangre = int.Parse(ddlTipSangre.SelectedValue);
             niños.fk_idAcudiente = int.Parse(ddlAcudiente.SelectedValue);
             niños.fk_idJardin = int.Parse(ddlJardin.SelectedValue);
-            niños.fechaNac = cldCalendar.SelectedDate;
+            niños.fechaNac = DateTime.Parse(txtFecNacimiento.Text);
             niñosDao.editarNiño(niños);
             cargarGrilla();
             PanelRegistro.Visible = false;
             PanelConsulta.Visible = true;
+            limpiarCampos();
         }
     }
 }

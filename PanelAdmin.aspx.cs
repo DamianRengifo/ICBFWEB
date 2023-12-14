@@ -40,7 +40,7 @@ namespace ICBFWEB2
 
         protected void btnMadres_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Acudiente.aspx");
         }
 
         protected void btnCerrarSesion_Click(object sender, EventArgs e)

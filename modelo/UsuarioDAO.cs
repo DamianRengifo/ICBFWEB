@@ -13,6 +13,7 @@ namespace ICBFWEB2.modelo
         {
             return (from j in bd.usuarios
                     where j.fk_idRol == 1
+                    orderby j.idUsuario descending
                     select new
                     {
                         Codigo = j.idUsuario,

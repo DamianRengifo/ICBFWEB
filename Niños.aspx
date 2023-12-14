@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <title>Gestion de Niños</title>
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.min.css" type="text/css"/>
     <script src="https://kit.fontawesome.com/712575d4a5.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/d6c2ac0aaf.js" crossorigin="anonymous"></script>
@@ -34,12 +34,12 @@
                     </div>
 
                     <div class="form-floating mb-3 w-75 mx-auto">
-                        <asp:TextBox ID="txtTelefono" type="number" runat="server" CssClass="form-control w-75" placeholder="Identificacion" MaxLength="20"  />
+                        <asp:TextBox ID="txtTelefono" type="number" runat="server" CssClass="form-control w-75" placeholder="Telefono" MaxLength="20"  />
                         <asp:Label ID="Label2" runat="server" AssociatedControlID="txtTelefono" Text="Telefono" CssClass="form-label"/>
                     </div>
 
                      <div class="form-floating mb-3 w-75 mx-auto">
-                        <asp:TextBox ID="txtDireccion" type="text" runat="server" CssClass="form-control w-75" placeholder="Identificacion" title="Minimo 20 numeros" />
+                        <asp:TextBox ID="txtDireccion" type="text" runat="server" CssClass="form-control w-75" placeholder="Direccion" title="Minimo 20 numeros" />
                         <asp:Label ID="Label3" runat="server" AssociatedControlID="txtDireccion" Text="Direccion" CssClass="form-label"/>
                     </div>
 
@@ -79,8 +79,8 @@
                      </div>
 
                     <label class="fw-bold fs-4 text-center">Fecha de nacimiento:</label>
-                    <asp:Calendar ID="cldCalendar" runat="server" CssClass="form-control mx-auto w-75"></asp:Calendar>
-
+                    <asp:TextBox ID="txtFecNacimiento" type="date" runat="server" CssClass="form-control mx-auto w-75"></asp:TextBox>
+                    
                     <div class="d-flex justify-content-center align-items-center w-75 my-3 gap-5">
                         <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" CssClass="btn btn-success rounded-pill px-3" OnClick="btnRegistrar_Click" />
                         <asp:Button ID="btnActualizar" runat="server" Text="Actualizar" CssClass="btn btn-primary rounded-pill px-3" OnClick="btnActualizar_Click" />
@@ -94,7 +94,7 @@
             <div class="row mx-auto">
                 <asp:Button ID="btnNuevo" runat="server" Text="Nuevo" CssClass="mx-auto btn btn-primary mb-5" OnClick="btnNuevo_Click" />
             </div>
-            <asp:GridView ID="gdvNiños" runat="server" AutoGenerateColumns="False" CssClass="table table-success fs-5"  OnRowCommand="gdvNiños_RowCommand">
+            <asp:GridView ID="gdvNiños" runat="server" AutoGenerateColumns="False" CssClass="table table-success w-75 mx-auto"  OnRowCommand="gdvNiños_RowCommand">
                 <Columns>
                     <asp:BoundField DataField="idNiño" HeaderText="Codigo" />
                     <asp:BoundField DataField="nombre" HeaderText="Nombre" />

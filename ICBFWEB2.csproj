@@ -68,6 +68,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Acudiente.aspx" />
     <Content Include="bootstrap-5.2.3-dist\css\bootstrap-grid.css" />
     <Content Include="bootstrap-5.2.3-dist\css\bootstrap-grid.min.css" />
     <Content Include="bootstrap-5.2.3-dist\css\bootstrap-grid.rtl.css" />
@@ -95,6 +96,8 @@
     <Content Include="PanelAdmin.aspx" />
     <Content Include="PanelMadre.aspx" />
     <Content Include="Resources\482c2986-1df5-4709-b4d9-ac30250d65c5.jpeg" />
+    <Content Include="Resources\57563186-9dc6-4d1a-afd6-6a6ce4a76c06.jpeg" />
+    <Content Include="Resources\acudientes.jpg" />
     <Content Include="Resources\descarga.jpg" />
     <Content Include="Resources\el-alcaparro-2.jpg" />
     <Content Include="Resources\ICBF_logo.png" />
@@ -102,6 +105,13 @@
     <Content Include="Login.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Acudiente.aspx.cs">
+      <DependentUpon>Acudiente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Acudiente.aspx.designer.cs">
+      <DependentUpon>Acudiente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="modelo\CiudadDAO.cs" />
     <Compile Include="modelo\EpsDAO.cs" />
     <Compile Include="modelo\EstadosDAO.cs" />
