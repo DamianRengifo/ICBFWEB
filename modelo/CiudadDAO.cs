@@ -12,5 +12,10 @@ namespace ICBFWEB2.modelo
         {
             return (from j in bd.ciudad_nacimiento select j).ToList();
         }
+
+        public int consultarId(String nomCiudad) {
+            int resultado = (from j in bd.ciudad_nacimiento where j.nomCiudad == nomCiudad select j.idCiudad).FirstOrDefault();
+            return resultado;
+        }
     }
 }

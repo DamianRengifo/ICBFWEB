@@ -12,5 +12,8 @@ namespace ICBFWEB2.modelo
         {
             return (from j in bd.eps select j).ToList();
         }
+        public String obtenerId(String nomEps) {
+            return (from j in bd.eps where j.nomEps == nomEps select j.idEps).FirstOrDefault().ToString();
+        }
     }
 }

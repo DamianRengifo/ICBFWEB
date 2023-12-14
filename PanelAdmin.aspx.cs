@@ -17,16 +17,37 @@ namespace ICBFWEB2
                 {
                     lblUser.Text = Session["nombre"].ToString();
                 }
+
             }
             else
             {
+                Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1));
+                Response.Cache.SetNoStore();
                 Response.Redirect("Login.aspx");
             }
         }
 
-        protected void btnIrAJardines_Click(object sender, EventArgs e)
+
+
+        protected void btnNiños_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Jardines.aspx");
+            Response.Redirect("Niños.aspx");
+        }
+
+        protected void btnJardines_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnMadres_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Acudiente.aspx");
+        }
+
+        protected void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Utilidades.Logout();
         }
     }
 }

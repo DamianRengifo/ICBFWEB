@@ -13,6 +13,7 @@ namespace ICBFWEB2.modelo
         {
             return (from j in bd.usuarios
                     where j.fk_idRol == 1
+                    orderby j.idUsuario descending
                     select new
                     {
                         Codigo = j.idUsuario,
@@ -123,6 +124,10 @@ namespace ICBFWEB2.modelo
             }
 
             return usuario; // retornamos el usuario encontrado o null si no hay coincidencias
+        }
+
+        public String consultarId(String nomUser) {
+            return (from j in bd.usuarios where j.nombre == nomUser select j.idUsuario).FirstOrDefault().ToString();    
         }
     }
 }

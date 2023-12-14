@@ -24,9 +24,9 @@ namespace ICBFWEB2.modelo
                     }).ToList();
 
         }
-        public void registrar(registro_asistencia registroAsistencia)
+        public void registrar(registro_asistencia registroAsistencia, int fk_idUser)
         {
-            registroAsistencia.fk_idMadCom = ClsVariablesGlobales.idUser;
+            registroAsistencia.fk_idMadCom = fk_idUser;
             bd.registro_asistencia.InsertOnSubmit(registroAsistencia);
             bd.SubmitChanges();
         }

@@ -22,14 +22,14 @@ namespace ICBFWEB2.modelo
                         idNiño = j.idNiño,
                         nombre = j.nombre,
                         numIdentificacion = j.numIdentificacion,
-                        telefonoNiño = j.telefonoNiño,
-                        direccionNiño = j.direccionNiño,
-                        fk_idCiudad = j.ciudad_nacimiento.nomCiudad,
-                        fk_idEps = j.eps.nomEps,
-                        fk_idTipSangre = j.tipo_sangre.nomTipoSangre,
-                        fk_idAcudiente = j.usuarios.nombre,
-                        fk_idJardin = j.registro_jardin.nomJardin,
-                        fechaNac = j.fechaNac
+                        telefono = j.telefonoNiño,
+                        direccion = j.direccionNiño,
+                        Ciudad = j.ciudad_nacimiento.nomCiudad,
+                        Eps = j.eps.nomEps,
+                        TipoSangre = j.tipo_sangre.nomTipoSangre,
+                        Acudiente = j.usuarios.nombre,
+                        Jardin = j.registro_jardin.nomJardin,
+                        FechaNacimiento = j.fechaNac
                     }).ToList();
         }
 
@@ -60,6 +60,11 @@ namespace ICBFWEB2.modelo
             niños niñoEliminar = (from j in bd.niños where j.idNiño == idNiño select j).FirstOrDefault();
             bd.niños.DeleteOnSubmit(niñoEliminar);
             bd.SubmitChanges();
+        }
+
+        public String consultarId(String nomNiño) {
+            String idNiño = (from j in bd.niños where j.nombre == nomNiño select j.idNiño).FirstOrDefault().ToString();
+            return idNiño;
         }
     }
 }

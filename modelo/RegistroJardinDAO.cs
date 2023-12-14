@@ -46,5 +46,9 @@ namespace ICBFWEB2.modelo
                         estado = j.estados.nomEstado
                     });
         }
+
+        public String consultarId(String nomJardin) {
+            return (from j in bd.registro_jardin where j.nomJardin == nomJardin select j.idJardin).FirstOrDefault().ToString();
+        }
     }
 }

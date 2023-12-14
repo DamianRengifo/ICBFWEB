@@ -17,5 +17,9 @@ namespace ICBFWEB2.modelo
         {
             return from e in bd.estados where e.fk_idTiposEstados == 2 select e;
         }
+
+        public String consultarEstados(String nomEstado) {
+            return (from j in bd.estados where j.nomEstado == nomEstado select j.idEstado).FirstOrDefault().ToString(); 
+        }
     }
 }
