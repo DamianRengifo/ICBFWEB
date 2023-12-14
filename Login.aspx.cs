@@ -14,45 +14,45 @@ namespace ICBFWEB2
 
         }
 
-        protected void btnIniciar_Click(object sender, EventArgs e)
-        {
-            modelo.UsuarioDAO usuarioDAO = new modelo.UsuarioDAO();
-            string docUser = Username.Text;
-            string password = Password.Text;
-            modelo.usuarios usuario = usuarioDAO.login(docUser, password);
-            if (!string.IsNullOrWhiteSpace(Username.Text) && !string.IsNullOrWhiteSpace(Password.Text))
+            protected void btnIniciar_Click(object sender, EventArgs e)
             {
-                if (usuario != null)
+                modelo.UsuarioDAO usuarioDAO = new modelo.UsuarioDAO();
+                string docUser = Username.Text;
+                string password = Password.Text;
+                modelo.usuarios usuario = usuarioDAO.login(docUser, password);
+                if (!string.IsNullOrWhiteSpace(Username.Text) && !string.IsNullOrWhiteSpace(Password.Text))
                 {
-                    var sesionNom = Session["nombre"] = usuario.nombre;
-                    Session["idUsuario"] = usuario.idUsuario;
-                    Session["nombre"] = usuario.nombre;
-                    Session["fk_idRol"] = usuario.fk_idRol;
-                    this.mensaje.Visible = true;
-                    lblMensaje.Text = "Bienvenido " + sesionNom;
+                    if (usuario != null)
+                    {
+                        var sesionNom = Session["nombre"] = usuario.nombre;
+                        Session["idUsuario"] = usuario.idUsuario;
+                        Session["nombre"] = usuario.nombre;
+                        Session["fk_idRol"] = usuario.fk_idRol;
+                        this.mensaje.Visible = true;
+                        lblMensaje.Text = "Bienvenido " + sesionNom;
 
-                    redirigirUsuario(usuario.fk_idRol);
+                        redirigirUsuario(usuario.fk_idRol);
+                    }
+                    else
+                    {
+                        mensaje.Visible = true;
+                        lblMensaje.Text = "Usuario o la contraseña son incorrectas";
+                        string script = @"
+                            <script type='text/javascript'>
+                                setTimeout(function() {
+                                    var mensaje = document.getElementById('" + mensaje.ClientID + @"');
+                                    mensaje.style.display = 'none';
+                                }, 3000);
+                            </script>";
+
+                        ClientScript.RegisterStartupScript(this.GetType(), "hideMessage", script);
+                    }
                 }
                 else
                 {
-                    mensaje.Visible = true;
-                    lblMensaje.Text = "Usuario o la contraseña son incorrectas";
-                    string script = @"
-                        <script type='text/javascript'>
-                            setTimeout(function() {
-                                var mensaje = document.getElementById('" + mensaje.ClientID + @"');
-                                mensaje.style.display = 'none';
-                            }, 3000);
-                        </script>";
-
-                    ClientScript.RegisterStartupScript(this.GetType(), "hideMessage", script);
+                    lblError.Text = "Alguno de los campos estan vacios";
                 }
             }
-            else
-            {
-                lblError.Text = "Alguno de los campos estan vacios";
-            }
-        }
 
         protected void btnCerrar_Click(object sender, EventArgs e)
         {

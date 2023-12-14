@@ -9,13 +9,11 @@
     <title>Panel de Acudiente</title>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
             <h1 class="text-center">Bienvenido <asp:Label ID="lblUser" runat="server" Text=""></asp:Label></h1>
-
-
         </div>
-    </form>
+    </div>
 
     <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
 </body>

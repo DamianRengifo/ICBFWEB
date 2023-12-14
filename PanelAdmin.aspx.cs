@@ -11,7 +11,22 @@ namespace ICBFWEB2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["idUsuario"] != null && Session["fk_idRol"].Equals(3))
+            {
+                if (!IsPostBack)
+                {
+                    lblUser.Text = Session["nombre"].ToString();
+                }
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
+        }
 
+        protected void btnIrAJardines_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Jardines.aspx");
         }
     }
 }

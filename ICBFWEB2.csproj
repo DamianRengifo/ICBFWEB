@@ -92,7 +92,7 @@
     <Content Include="bootstrap-5.2.3-dist\js\bootstrap.min.js" />
     <Content Include="PanelAcudiente.aspx" />
     <Content Include="PanelAdmin.aspx" />
-    <Content Include="PanelMadre.aspx" />
+    <Content Include="Jardines.aspx" />
     <Content Include="Resources\ICBF_logo.png" />
     <Content Include="Web.config" />
     <Content Include="Login.aspx" />
@@ -129,12 +129,12 @@
     <Compile Include="PanelAdmin.aspx.designer.cs">
       <DependentUpon>PanelAdmin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PanelMadre.aspx.cs">
-      <DependentUpon>PanelMadre.aspx</DependentUpon>
+    <Compile Include="Jardines.aspx.cs">
+      <DependentUpon>Jardines.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PanelMadre.aspx.designer.cs">
-      <DependentUpon>PanelMadre.aspx</DependentUpon>
+    <Compile Include="Jardines.aspx.designer.cs">
+      <DependentUpon>Jardines.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Login.aspx.cs">
@@ -146,11 +146,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="modelo\ORM.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>ORM.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="bootstrap-5.2.3-dist\css\bootstrap-grid.css.map" />
     <Content Include="bootstrap-5.2.3-dist\css\bootstrap-grid.min.css.map" />
     <Content Include="bootstrap-5.2.3-dist\css\bootstrap-grid.rtl.css.map" />
@@ -173,6 +168,11 @@
     <Content Include="bootstrap-5.2.3-dist\js\bootstrap.esm.min.js.map" />
     <Content Include="bootstrap-5.2.3-dist\js\bootstrap.js.map" />
     <Content Include="bootstrap-5.2.3-dist\js\bootstrap.min.js.map" />
+    <Content Include="modelo\ORM.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>ORM.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="modelo\ORM.dbml.layout">
       <DependentUpon>ORM.dbml</DependentUpon>
     </None>
@@ -186,6 +186,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="css\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
