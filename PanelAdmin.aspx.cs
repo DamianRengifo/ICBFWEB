@@ -37,17 +37,22 @@ namespace ICBFWEB2
 
         protected void btnJardines_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Jardines.aspx");
         }
 
         protected void btnMadres_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Acudiente.aspx");
+            Response.Redirect("MadreComunitaria.aspx");
         }
 
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             Utilidades.Logout();
+        }
+
+        protected void btnAcudientes_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Acudiente.aspx");
         }
     }
 }
