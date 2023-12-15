@@ -24,9 +24,9 @@ namespace ICBFWEB2.modelo
                     }).ToList();
 
         }
-        public void registrar(registro_asistencia registroAsistencia, int fk_idUser)
+        public void registrar(registro_asistencia registroAsistencia) //int fk_idUser)
         {
-            registroAsistencia.fk_idMadCom = fk_idUser;
+            //registroAsistencia.fk_idMadCom = fk_idUser;
             bd.registro_asistencia.InsertOnSubmit(registroAsistencia);
             bd.SubmitChanges();
         }
@@ -39,7 +39,7 @@ namespace ICBFWEB2.modelo
         }
 
         public List<registro_asistencia> asistenciaEnfermedad() {
-            var resultado = (from j in bd.registro_asistencia where j.fk_idEstado == 1002 select j).ToList();
+            var resultado = (from j in bd.registro_asistencia where j.fk_idEstado == 2 select j).ToList();
             return resultado;
         }
 
