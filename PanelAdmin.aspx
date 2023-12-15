@@ -47,7 +47,7 @@
                     </div>
 
                     <asp:Image ID="Image2" runat="server" CssClass="h-50 w-50 mx-auto my-2 rounded-4" ImageUrl="~/Resources/482c2986-1df5-4709-b4d9-ac30250d65c5.jpeg"/>
-                    <p class="fs-4 text-center my-2">Registra y gestiona la informacion de todos los niños de nuestra organizacion</p>
+                    <p class="fs-4 text-center my-2">Registra y gestiona la informacion de todas las madres comunitarias de nuestra organizacion</p>
                     <asp:LinkButton ID="btnMadres" runat="server" CssClass="btn btn-info btn-outline-light mx-auto my-3" OnClick="btnMadres_Click">Gestionar Madres Comunitarias</asp:LinkButton>
                 </article>
 
@@ -59,7 +59,7 @@
 
                     <asp:Image ID="Image4" runat="server" CssClass="h-50 w-50 mx-auto my-2 rounded-4" ImageUrl="~/Resources/acudientes.jpg"/>
                     <p class="fs-4 text-center my-2">Registra y gestiona la informacion de los acudientes de los niños que estan asociados con nuestra fundacion :)</p>
-                    <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-primary btn-outline-light mx-auto my-3" OnClick="btnMadres_Click">Gestionar Acudientes</asp:LinkButton>
+                    <asp:LinkButton ID="btnAcudientes" runat="server" CssClass="btn btn-primary btn-outline-light mx-auto my-3" OnClick="btnAcudientes_Click">Gestionar Acudientes</asp:LinkButton>
                 </article>
 
             </div>

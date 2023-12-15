@@ -11,15 +11,25 @@ namespace ICBFWEB2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                modelo.EstadosDAO estDAO = new modelo.EstadosDAO();
-                ddlEstado.DataSource = estDAO.consultarTodos();
-                ddlEstado.DataValueField = "idEstado";
-                ddlEstado.DataTextField = "nomEstado";
-                ddlEstado.DataBind();
-                cargarTabla();
+            if((Session["idUsuario"] != null && Session["fk_idRol"].Equals(3))) {
+                if (!IsPostBack)
+                {
+                    modelo.EstadosDAO estDAO = new modelo.EstadosDAO();
+                    ddlEstado.DataSource = estDAO.consultarTodos();
+                    ddlEstado.DataValueField = "idEstado";
+                    ddlEstado.DataTextField = "nomEstado";
+                    ddlEstado.DataBind();
+                    cargarTabla();
+                }
             }
+            else
+            {
+                Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1));
+                Response.Cache.SetNoStore();
+                Response.Redirect("Login.aspx");
+            }
+           
         }
 
         public void cargarTabla()

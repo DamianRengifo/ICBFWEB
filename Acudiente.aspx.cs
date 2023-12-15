@@ -130,6 +130,7 @@ namespace ICBFWEB2
             acudiente.telefono = txtTelefono.Text;
             acudiente.celular = txtCelular.Text;
             acudiente.direccion = txtDireccion.Text;
+            acudiente.email = txtCorreo.Text;
             if (!String.IsNullOrWhiteSpace(txtContraseña.Text)) {
                 acudiente.clave = txtContraseña.Text;
             }
