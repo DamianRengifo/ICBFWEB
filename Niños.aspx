@@ -85,6 +85,7 @@
                         <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" CssClass="btn btn-success rounded-pill px-3" OnClick="btnRegistrar_Click" />
                         <asp:Button ID="btnActualizar" runat="server" Text="Actualizar" CssClass="btn btn-primary rounded-pill px-3" OnClick="btnActualizar_Click" />
                         <asp:Button ID="Button2" runat="server" Text="Cancelar" CssClass="btn btn-danger rounded-pill px-3" OnClick="Button2_Click" />
+                        <asp:Button ID="btnFiltro" runat="server" Text="Filtrar Por Jardines" CssClass="btn btn-warning text-black rounded-pill px-3" OnClick="btnFiltro_Click" />
                     </div>
                 </div>
             </div>
@@ -121,6 +122,39 @@
                 </Columns>
             </asp:GridView>
         </asp:Panel>
+        <asp:Panel ID="PanelFormFiltro" runat="server" Visible="False">
+             <div class="form-floating mb-3 w-75 mx-auto">
+               <asp:DropDownList ID="ddlFiltroJardin" runat="server" CssClass="form-select w-75">
+                   <asp:ListItem>Seleccionar</asp:ListItem>
+                 </asp:DropDownList>
+               <label for="ddlCiudad">Jardin</label>
+             </div>
+
+            <div class="d-flex justify-content-center align-items-center">
+                <asp:Button ID="btnFilrar" runat="server" Text="Filtrar" CssClass="btn btn-success rounded-pill px-3" OnClick="btnFilrar_Click" />
+                <asp:Button ID="btnCancelarFiltro" runat="server" Text="Cancelar" CssClass="btn btn-danger rounded-pill px-3" OnClick="btnCancelarFiltro_Click" />
+            </div>
+        </asp:Panel>
+
+        <asp:Panel ID="PanelFiltro" runat="server">
+            <asp:Button ID="btnCerrar" runat="server" Text="Cerrar" CssClass="mx-auto my-3 btn btn-primary rounded-pill px-3" OnClick="btnCerrar_Click"/>
+            <asp:GridView ID="gdvFiltro" runat="server" CssClass="table table-success" AutoGenerateColumns="False">
+                <Columns>
+                     <asp:BoundField DataField="idNiño" HeaderText="Codigo" />
+                     <asp:BoundField DataField="nombre" HeaderText="Nombre" />
+                     <asp:BoundField DataField="numIdentificacion" HeaderText="Identificacion" />
+                     <asp:BoundField DataField="telefono" HeaderText="Telefono" />
+                     <asp:BoundField DataField="direccion" HeaderText="Direccion" />
+                     <asp:BoundField DataField="Ciudad" HeaderText="Ciudad" />
+                     <asp:BoundField DataField="Eps" HeaderText="Eps" />
+                     <asp:BoundField DataField="TipoSangre" HeaderText="Tipo de Sangre" />
+                     <asp:BoundField DataField="Acudiente" HeaderText="Acudiente" />
+                     <asp:BoundField DataField="Jardin" HeaderText="Jardin" />
+                     <asp:BoundField DataField="FechaNacimiento" HeaderText="Fecha de Nacimiento" DataFormatString="{0:d}" />
+                </Columns>
+            </asp:GridView>
+        </asp:Panel>
+
     </form>
 
         <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>

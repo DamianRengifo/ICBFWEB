@@ -23,7 +23,8 @@ namespace ICBFWEB2
                     cargarCiudad();
                     cargarTipoSangre();
                     cargarAcudiente();
-                    cargarJardin();
+                    cargarJardin(ddlJardin);
+                    cargarJardin(ddlFiltroJardin);
                 }
             }
             else
@@ -79,7 +80,7 @@ namespace ICBFWEB2
             ddlAcudiente.DataBind();
         }
 
-        public void cargarJardin()
+        public void cargarJardin(DropDownList ddlJardin)
         {
             modelo.RegistroJardinDAO jardinDao = new modelo.RegistroJardinDAO();
             ddlJardin.DataSource = jardinDao.consultarTodos();
@@ -87,6 +88,7 @@ namespace ICBFWEB2
             ddlJardin.DataTextField = "nomJardin";
             ddlJardin.DataBind();
         }
+
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
@@ -103,9 +105,28 @@ namespace ICBFWEB2
             niños.fk_idAcudiente = int.Parse(ddlAcudiente.SelectedValue);
             niños.fk_idJardin = int.Parse(ddlJardin.SelectedValue);
             niños.fechaNac =DateTime.Parse(txtFecNacimiento.Text);
-            niñosDao.registrarNiños(niños);
-            cargarGrilla();
-            limpiarCampos();
+            DateTime fechaNacimiento = DateTime.ParseExact(txtFecNacimiento.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+            if (
+                    niñosDao.validarExistenciaNiño(niños) && 
+                    niñosDao.validarNombreNiño(niños.nombre, niños.numIdentificacion) &&
+                    niñosDao.validarAños(fechaNacimiento)
+                ) 
+            {
+                niñosDao.registrarNiños(niños);
+                cargarGrilla();
+                limpiarCampos();
+
+            }
+            else
+            {
+                string script = @"
+                        <script type='text/javascript'>
+                            alert('El niño ya esta registrado')
+                        </script>";
+
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", script, false);
+
+            }
 
         }
 
@@ -188,6 +209,36 @@ namespace ICBFWEB2
             PanelRegistro.Visible = false;
             PanelConsulta.Visible = true;
             limpiarCampos();
+        }
+
+        protected void btnFiltro_Click(object sender, EventArgs e)
+        {
+            PanelRegistro.Visible = false;
+            PanelFormFiltro.Visible = true;
+        }
+
+        protected void btnCancelarFiltro_Click(object sender, EventArgs e)
+        {
+            PanelFormFiltro.Visible = false;
+            PanelRegistro.Visible = true;
+            limpiarCampos();
+        }
+
+        public void cargarFiltros(int jardin) {
+            modelo.NiñosDAO niñosDAO = new modelo.NiñosDAO();
+            gdvFiltro.DataSource = niñosDAO.reporteNiñoJardin(jardin);
+            gdvFiltro.DataBind();
+        }
+
+        protected void btnFilrar_Click(object sender, EventArgs e)
+        {
+            cargarFiltros(int.Parse(ddlFiltroJardin.SelectedValue));
+            PanelFiltro.Visible = true;
+        }
+
+        protected void btnCerrar_Click(object sender, EventArgs e)
+        {
+            PanelFiltro.Visible = false;
         }
     }
 }

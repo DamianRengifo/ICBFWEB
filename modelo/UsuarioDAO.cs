@@ -129,5 +129,21 @@ namespace ICBFWEB2.modelo
         public String consultarId(String nomUser) {
             return (from j in bd.usuarios where j.nombre == nomUser select j.idUsuario).FirstOrDefault().ToString();    
         }
+
+        public Boolean validarNombreMadre(String nombre, String identificacion)
+        {
+            var niño = (from j in bd.usuarios 
+                        where j.nombre == nombre && j.numIdentificacion == identificacion && j.fk_idRol == 2 select j);
+
+            if (niño.ToList().Count > 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
     }
 }

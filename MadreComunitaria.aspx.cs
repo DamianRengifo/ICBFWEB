@@ -66,11 +66,23 @@ namespace ICBFWEB2
                 usuarios.fechaNacimiento = DateTime.Parse(txtFecNacimiento.Text);
                 usuarios.clave = txtContraseña.Text;
 
-                usuariosDAO.registrarMadre(usuarios);
-                limpiarCampos();
-                PanelFormulario.Visible = false;
-                PanelTabla.Visible = true;
-                cargarTabla();
+                if (usuariosDAO.validarNombreMadre(usuarios.nombre, usuarios.numIdentificacion)) {
+                    usuariosDAO.registrarMadre(usuarios);
+                    limpiarCampos();
+                    PanelFormulario.Visible = false;
+                    PanelTabla.Visible = true;
+                    cargarTabla();
+                }
+                else
+                {
+                    string scriptError = @"
+                        <script type='text/javascript'>
+                            alert('La madre comunitaria ya esta registrada')
+                        </script>";
+
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", scriptError, false);
+                }
+                
             }
             catch (Exception ex)
             {
