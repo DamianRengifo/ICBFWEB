@@ -30,12 +30,12 @@ namespace ICBFWEB2.modelo
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnCreated();
-    partial void Insertciudad_nacimiento(ciudad_nacimiento instance);
-    partial void Updateciudad_nacimiento(ciudad_nacimiento instance);
-    partial void Deleteciudad_nacimiento(ciudad_nacimiento instance);
     partial void Inserteps(eps instance);
     partial void Updateeps(eps instance);
     partial void Deleteeps(eps instance);
+    partial void Insertciudad_nacimiento(ciudad_nacimiento instance);
+    partial void Updateciudad_nacimiento(ciudad_nacimiento instance);
+    partial void Deleteciudad_nacimiento(ciudad_nacimiento instance);
     partial void Insertestados(estados instance);
     partial void Updateestados(estados instance);
     partial void Deleteestados(estados instance);
@@ -60,22 +60,16 @@ namespace ICBFWEB2.modelo
     partial void Insertroles(roles instance);
     partial void Updateroles(roles instance);
     partial void Deleteroles(roles instance);
-    partial void Inserttipo_sangre(tipo_sangre instance);
-    partial void Updatetipo_sangre(tipo_sangre instance);
-    partial void Deletetipo_sangre(tipo_sangre instance);
     partial void Inserttipo_estados(tipo_estados instance);
     partial void Updatetipo_estados(tipo_estados instance);
     partial void Deletetipo_estados(tipo_estados instance);
+    partial void Inserttipo_sangre(tipo_sangre instance);
+    partial void Updatetipo_sangre(tipo_sangre instance);
+    partial void Deletetipo_sangre(tipo_sangre instance);
     partial void Insertusuarios(usuarios instance);
     partial void Updateusuarios(usuarios instance);
     partial void Deleteusuarios(usuarios instance);
     #endregion
-		
-		public ORMDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["ICBFConnectionString"].ConnectionString, mappingSource)
-		{
-			OnCreated();
-		}
 		
 		public ORMDataContext(string connection) : 
 				base(connection, mappingSource)
@@ -101,19 +95,19 @@ namespace ICBFWEB2.modelo
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<ciudad_nacimiento> ciudad_nacimiento
-		{
-			get
-			{
-				return this.GetTable<ciudad_nacimiento>();
-			}
-		}
-		
 		public System.Data.Linq.Table<eps> eps
 		{
 			get
 			{
 				return this.GetTable<eps>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ciudad_nacimiento> ciudad_nacimiento
+		{
+			get
+			{
+				return this.GetTable<ciudad_nacimiento>();
 			}
 		}
 		
@@ -181,19 +175,19 @@ namespace ICBFWEB2.modelo
 			}
 		}
 		
-		public System.Data.Linq.Table<tipo_sangre> tipo_sangre
-		{
-			get
-			{
-				return this.GetTable<tipo_sangre>();
-			}
-		}
-		
 		public System.Data.Linq.Table<tipo_estados> tipo_estados
 		{
 			get
 			{
 				return this.GetTable<tipo_estados>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tipo_sangre> tipo_sangre
+		{
+			get
+			{
+				return this.GetTable<tipo_sangre>();
 			}
 		}
 		
@@ -217,120 +211,6 @@ namespace ICBFWEB2.modelo
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), identificacion, clave);
 			return ((ISingleResult<obtenerRolResult>)(result.ReturnValue));
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ciudad_nacimiento")]
-	public partial class ciudad_nacimiento : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _idCiudad;
-		
-		private string _nomCiudad;
-		
-		private EntitySet<niños> _niños;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidCiudadChanging(int value);
-    partial void OnidCiudadChanged();
-    partial void OnnomCiudadChanging(string value);
-    partial void OnnomCiudadChanged();
-    #endregion
-		
-		public ciudad_nacimiento()
-		{
-			this._niños = new EntitySet<niños>(new Action<niños>(this.attach_niños), new Action<niños>(this.detach_niños));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idCiudad", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int idCiudad
-		{
-			get
-			{
-				return this._idCiudad;
-			}
-			set
-			{
-				if ((this._idCiudad != value))
-				{
-					this.OnidCiudadChanging(value);
-					this.SendPropertyChanging();
-					this._idCiudad = value;
-					this.SendPropertyChanged("idCiudad");
-					this.OnidCiudadChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nomCiudad", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
-		public string nomCiudad
-		{
-			get
-			{
-				return this._nomCiudad;
-			}
-			set
-			{
-				if ((this._nomCiudad != value))
-				{
-					this.OnnomCiudadChanging(value);
-					this.SendPropertyChanging();
-					this._nomCiudad = value;
-					this.SendPropertyChanged("nomCiudad");
-					this.OnnomCiudadChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ciudad_nacimiento_niños", Storage="_niños", ThisKey="idCiudad", OtherKey="fk_idCiudad")]
-		public EntitySet<niños> niños
-		{
-			get
-			{
-				return this._niños;
-			}
-			set
-			{
-				this._niños.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_niños(niños entity)
-		{
-			this.SendPropertyChanging();
-			entity.ciudad_nacimiento = this;
-		}
-		
-		private void detach_niños(niños entity)
-		{
-			this.SendPropertyChanging();
-			entity.ciudad_nacimiento = null;
 		}
 	}
 	
@@ -445,6 +325,120 @@ namespace ICBFWEB2.modelo
 		{
 			this.SendPropertyChanging();
 			entity.eps = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ciudad_nacimiento")]
+	public partial class ciudad_nacimiento : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idCiudad;
+		
+		private string _nomCiudad;
+		
+		private EntitySet<niños> _niños;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidCiudadChanging(int value);
+    partial void OnidCiudadChanged();
+    partial void OnnomCiudadChanging(string value);
+    partial void OnnomCiudadChanged();
+    #endregion
+		
+		public ciudad_nacimiento()
+		{
+			this._niños = new EntitySet<niños>(new Action<niños>(this.attach_niños), new Action<niños>(this.detach_niños));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idCiudad", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idCiudad
+		{
+			get
+			{
+				return this._idCiudad;
+			}
+			set
+			{
+				if ((this._idCiudad != value))
+				{
+					this.OnidCiudadChanging(value);
+					this.SendPropertyChanging();
+					this._idCiudad = value;
+					this.SendPropertyChanged("idCiudad");
+					this.OnidCiudadChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nomCiudad", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
+		public string nomCiudad
+		{
+			get
+			{
+				return this._nomCiudad;
+			}
+			set
+			{
+				if ((this._nomCiudad != value))
+				{
+					this.OnnomCiudadChanging(value);
+					this.SendPropertyChanging();
+					this._nomCiudad = value;
+					this.SendPropertyChanged("nomCiudad");
+					this.OnnomCiudadChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ciudad_nacimiento_niños", Storage="_niños", ThisKey="idCiudad", OtherKey="fk_idCiudad")]
+		public EntitySet<niños> niños
+		{
+			get
+			{
+				return this._niños;
+			}
+			set
+			{
+				this._niños.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_niños(niños entity)
+		{
+			this.SendPropertyChanging();
+			entity.ciudad_nacimiento = this;
+		}
+		
+		private void detach_niños(niños entity)
+		{
+			this.SendPropertyChanging();
+			entity.ciudad_nacimiento = null;
 		}
 	}
 	
@@ -2373,120 +2367,6 @@ namespace ICBFWEB2.modelo
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tipo_sangre")]
-	public partial class tipo_sangre : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _idTipoSangre;
-		
-		private string _nomTipoSangre;
-		
-		private EntitySet<niños> _niños;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidTipoSangreChanging(int value);
-    partial void OnidTipoSangreChanged();
-    partial void OnnomTipoSangreChanging(string value);
-    partial void OnnomTipoSangreChanged();
-    #endregion
-		
-		public tipo_sangre()
-		{
-			this._niños = new EntitySet<niños>(new Action<niños>(this.attach_niños), new Action<niños>(this.detach_niños));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idTipoSangre", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int idTipoSangre
-		{
-			get
-			{
-				return this._idTipoSangre;
-			}
-			set
-			{
-				if ((this._idTipoSangre != value))
-				{
-					this.OnidTipoSangreChanging(value);
-					this.SendPropertyChanging();
-					this._idTipoSangre = value;
-					this.SendPropertyChanged("idTipoSangre");
-					this.OnidTipoSangreChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nomTipoSangre", DbType="NVarChar(2) NOT NULL", CanBeNull=false)]
-		public string nomTipoSangre
-		{
-			get
-			{
-				return this._nomTipoSangre;
-			}
-			set
-			{
-				if ((this._nomTipoSangre != value))
-				{
-					this.OnnomTipoSangreChanging(value);
-					this.SendPropertyChanging();
-					this._nomTipoSangre = value;
-					this.SendPropertyChanged("nomTipoSangre");
-					this.OnnomTipoSangreChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tipo_sangre_niños", Storage="_niños", ThisKey="idTipoSangre", OtherKey="fk_idTipSangre")]
-		public EntitySet<niños> niños
-		{
-			get
-			{
-				return this._niños;
-			}
-			set
-			{
-				this._niños.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_niños(niños entity)
-		{
-			this.SendPropertyChanging();
-			entity.tipo_sangre = this;
-		}
-		
-		private void detach_niños(niños entity)
-		{
-			this.SendPropertyChanging();
-			entity.tipo_sangre = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tipo_estados")]
 	public partial class tipo_estados : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2598,6 +2478,120 @@ namespace ICBFWEB2.modelo
 		{
 			this.SendPropertyChanging();
 			entity.tipo_estados = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tipo_sangre")]
+	public partial class tipo_sangre : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idTipoSangre;
+		
+		private string _nomTipoSangre;
+		
+		private EntitySet<niños> _niños;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidTipoSangreChanging(int value);
+    partial void OnidTipoSangreChanged();
+    partial void OnnomTipoSangreChanging(string value);
+    partial void OnnomTipoSangreChanged();
+    #endregion
+		
+		public tipo_sangre()
+		{
+			this._niños = new EntitySet<niños>(new Action<niños>(this.attach_niños), new Action<niños>(this.detach_niños));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idTipoSangre", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idTipoSangre
+		{
+			get
+			{
+				return this._idTipoSangre;
+			}
+			set
+			{
+				if ((this._idTipoSangre != value))
+				{
+					this.OnidTipoSangreChanging(value);
+					this.SendPropertyChanging();
+					this._idTipoSangre = value;
+					this.SendPropertyChanged("idTipoSangre");
+					this.OnidTipoSangreChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nomTipoSangre", DbType="NVarChar(2) NOT NULL", CanBeNull=false)]
+		public string nomTipoSangre
+		{
+			get
+			{
+				return this._nomTipoSangre;
+			}
+			set
+			{
+				if ((this._nomTipoSangre != value))
+				{
+					this.OnnomTipoSangreChanging(value);
+					this.SendPropertyChanging();
+					this._nomTipoSangre = value;
+					this.SendPropertyChanged("nomTipoSangre");
+					this.OnnomTipoSangreChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tipo_sangre_niños", Storage="_niños", ThisKey="idTipoSangre", OtherKey="fk_idTipSangre")]
+		public EntitySet<niños> niños
+		{
+			get
+			{
+				return this._niños;
+			}
+			set
+			{
+				this._niños.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_niños(niños entity)
+		{
+			this.SendPropertyChanging();
+			entity.tipo_sangre = this;
+		}
+		
+		private void detach_niños(niños entity)
+		{
+			this.SendPropertyChanging();
+			entity.tipo_sangre = null;
 		}
 	}
 	

@@ -91,11 +91,11 @@
     <Content Include="bootstrap-5.2.3-dist\js\bootstrap.esm.min.js" />
     <Content Include="bootstrap-5.2.3-dist\js\bootstrap.js" />
     <Content Include="bootstrap-5.2.3-dist\js\bootstrap.min.js" />
+    <Content Include="MadreComunitaria.aspx" />
     <Content Include="Niños.aspx" />
     <Content Include="PanelAcudiente.aspx" />
     <Content Include="PanelAdmin.aspx" />
     <Content Include="Jardines.aspx" />
-
     <Content Include="PanelMadre.aspx" />
     <Content Include="Resources\482c2986-1df5-4709-b4d9-ac30250d65c5.jpeg" />
     <Content Include="Resources\57563186-9dc6-4d1a-afd6-6a6ce4a76c06.jpeg" />
@@ -113,6 +113,13 @@
     </Compile>
     <Compile Include="Acudiente.aspx.designer.cs">
       <DependentUpon>Acudiente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MadreComunitaria.aspx.cs">
+      <DependentUpon>MadreComunitaria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MadreComunitaria.aspx.designer.cs">
+      <DependentUpon>MadreComunitaria.aspx</DependentUpon>
     </Compile>
     <Compile Include="modelo\CiudadDAO.cs" />
     <Compile Include="modelo\EpsDAO.cs" />
@@ -157,6 +164,13 @@
     </Compile>
     <Compile Include="Jardines.aspx.designer.cs">
       <DependentUpon>Jardines.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PanelMadre.aspx.cs">
+      <DependentUpon>PanelMadre.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PanelMadre.aspx.designer.cs">
+      <DependentUpon>PanelMadre.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Login.aspx.cs">

@@ -1,17 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ICBF" Class="ORMDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=BOGAPRCSFFSD100\SQLEXPRESS;Initial Catalog=ICBF;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ICBFConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.ciudad_nacimiento" Member="ciudad_nacimiento">
-    <Type Name="ciudad_nacimiento">
-      <Column Name="idCiudad" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="nomCiudad" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
-      <Association Name="ciudad_nacimiento_niños" Member="niños" ThisKey="idCiudad" OtherKey="fk_idCiudad" Type="niños" />
-    </Type>
-  </Table>
   <Table Name="dbo.eps" Member="eps">
     <Type Name="eps">
       <Column Name="idEps" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="nomEps" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
       <Association Name="eps_niños" Member="niños" ThisKey="idEps" OtherKey="fk_idEps" Type="niños" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ciudad_nacimiento" Member="ciudad_nacimiento">
+    <Type Name="ciudad_nacimiento">
+      <Column Name="idCiudad" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nomCiudad" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="ciudad_nacimiento_niños" Member="niños" ThisKey="idCiudad" OtherKey="fk_idCiudad" Type="niños" />
     </Type>
   </Table>
   <Table Name="dbo.estados" Member="estados">
@@ -103,18 +102,18 @@
       <Association Name="roles_usuarios" Member="usuarios" ThisKey="idRol" OtherKey="fk_idRol" Type="usuarios" />
     </Type>
   </Table>
-  <Table Name="dbo.tipo_sangre" Member="tipo_sangre">
-    <Type Name="tipo_sangre">
-      <Column Name="idTipoSangre" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="nomTipoSangre" Type="System.String" DbType="NVarChar(2) NOT NULL" CanBeNull="false" />
-      <Association Name="tipo_sangre_niños" Member="niños" ThisKey="idTipoSangre" OtherKey="fk_idTipSangre" Type="niños" />
-    </Type>
-  </Table>
   <Table Name="dbo.tipo_estados" Member="tipo_estados">
     <Type Name="tipo_estados">
       <Column Name="idTipEstados" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="nomTipEstados" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
       <Association Name="tipo_estados_estados" Member="estados" ThisKey="idTipEstados" OtherKey="fk_idTiposEstados" Type="estados" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tipo_sangre" Member="tipo_sangre">
+    <Type Name="tipo_sangre">
+      <Column Name="idTipoSangre" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nomTipoSangre" Type="System.String" DbType="NVarChar(2) NOT NULL" CanBeNull="false" />
+      <Association Name="tipo_sangre_niños" Member="niños" ThisKey="idTipoSangre" OtherKey="fk_idTipSangre" Type="niños" />
     </Type>
   </Table>
   <Table Name="dbo.usuarios" Member="usuarios">

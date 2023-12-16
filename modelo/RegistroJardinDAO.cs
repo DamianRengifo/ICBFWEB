@@ -7,7 +7,7 @@ namespace ICBFWEB2.modelo
 {
     public class RegistroJardinDAO
     {
-        ORMDataContext bd = new ORMDataContext(@"Data Source=CHECHOPC\SQLEXPRESS;Initial Catalog=ICBF;Integrated Security=True");
+        ORMDataContext bd = new ORMDataContext(@"Data Source=DESKTOP-DVTF0L7\SQLEXPRESS;Initial Catalog=ICBF;Integrated Security=True");
 
         public void registrar(registro_jardin jardin)
         {
