@@ -11,8 +11,13 @@ namespace ICBFWEB2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["idUsuario"] != null && Session["fk_idRol"].Equals(2)) {
-                lblUser.Text = Session["nombre"].ToString();
+            if (Session["idUsuario"] != null && Session["fk_idRol"].Equals(2))
+            {
+                if (!IsPostBack)
+                {
+                    lblUser.Text = Session["nombre"].ToString();
+                }
+
             }
             else
             {
@@ -21,6 +26,11 @@ namespace ICBFWEB2
                 Response.Cache.SetNoStore();
                 Response.Redirect("Login.aspx");
             }
+        }
+
+        protected void btnIrARegistroAsistencia_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("RegistroAsistencia.aspx");
         }
     }
 }
