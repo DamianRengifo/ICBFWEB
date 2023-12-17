@@ -98,7 +98,7 @@ namespace ICBFWEB2.modelo
         }
 
         public Boolean validarNombreNiño(String nombre, String identificacion) {
-            var niño = (from j in bd.niños where j.nombre == nombre && j.numIdentificacion == identificacion select j);
+            var niño = (from j in bd.niños where j.nombre == nombre || j.numIdentificacion == identificacion select j);
 
             if (niño.ToList().Count > 0) {
                 return false;

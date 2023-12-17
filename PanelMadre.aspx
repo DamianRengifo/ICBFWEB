@@ -10,6 +10,10 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <header class="bg-primary text-white d-flex justify-content-between align-items-center">
+            <h1 class="">Panel de Madre Comunitaria</h1>
+            <asp:Button ID="btnLogout" runat="server" Text="Cerrar Sesion" CssClass="btn btn-light text-primary px-3 rounded-pill me-5" OnClick="btnLogout_Click"  />
+        </header>
         <div class="container text-center">
             <div class="row mt-5">
                 <h1 class="fw-bold">Bienvenido <asp:Label ID="lblUser" runat="server" Text=""></asp:Label> </h1>

@@ -50,5 +50,32 @@ namespace ICBFWEB2.modelo
         public String consultarId(String nomJardin) {
             return (from j in bd.registro_jardin where j.nomJardin == nomJardin select j.idJardin).FirstOrDefault().ToString();
         }
+
+        public Object filtroJardines(int estado) {
+            return (from j in bd.registro_jardin where j.fk_idEstado == estado
+                    select new
+                    {
+                        idJardin = j.idJardin,
+                        nomJardin = j.nomJardin,
+                        direccionJardin = j.direccionJardin,
+                        estado = j.estados.nomEstado
+                    }).ToList();
+        }
+
+        public Boolean validarNombreJardin(String nomjardin)
+        {
+            var niño = (from j in bd.registro_jardin
+                        where j.nomJardin == nomjardin
+                        select j);
+
+            if (niño.ToList().Count > 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

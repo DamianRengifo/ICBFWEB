@@ -33,6 +33,10 @@ namespace ICBFWEB2
                     ddlEstado.DataBind();
                 }
             }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
 
         protected void btnRegistrarAsis_Click(object sender, EventArgs e)

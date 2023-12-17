@@ -21,7 +21,7 @@
                 <asp:Panel ID="PanelFormulario" runat="server" Visible="False">
                     <section class="container-fluid mt-5">
                         <div class="form-floating mb-3 w-75 mx-auto">
-                            <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control w-75" placeholder="Nombre del Niño" />
+                            <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control w-75" placeholder="Nombre" />
                             <asp:Label ID="lblNombre" runat="server" AssociatedControlID="txtNombre" Text="Nombre del Niño" CssClass="form-label" />
                         </div>
 

@@ -32,5 +32,10 @@ namespace ICBFWEB2
         {
             Response.Redirect("RegistroAsistencia.aspx");
         }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Utilidades.Logout();
+        }
     }
 }

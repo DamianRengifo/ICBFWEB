@@ -52,6 +52,10 @@
                             <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-danger btn-lg" OnClick="btnCancelar_Click"/>
                         </div>
 
+
+                        <div class="col-12 text-center my-2">
+                             <asp:Button ID="btnFiltro" runat="server" Text="Filtrar Por Jardines" CssClass="btn btn-warning text-black rounded-pill px-3 mx-auto" OnClick="btnFiltro_Click" />
+                        </div>
                     </div>
             </asp:Panel>
                 <br /><br />
@@ -73,6 +77,27 @@
                     </Columns>
                 </asp:GridView>
             </asp:Panel>
+
+             <asp:Panel ID="PanelFormFiltro" runat="server" Visible="False">
+      <div class="form-floating mb-3 w-75 mx-auto">
+        <asp:DropDownList ID="ddlFiltroJardin" runat="server" CssClass="form-select w-75">
+            <asp:ListItem>Seleccionar</asp:ListItem>
+          </asp:DropDownList>
+        <label for="ddlCiudad">Jardin</label>
+      </div>
+
+     <div class="d-flex justify-content-center align-items-center">
+         <asp:Button ID="btnFilrar" runat="server" Text="Filtrar" CssClass="btn btn-success rounded-pill px-3" OnClick="btnFilrar_Click" />
+         <asp:Button ID="btnCancelarFiltro" runat="server" Text="Cancelar" CssClass="btn btn-danger rounded-pill px-3" OnClick="btnCancelarFiltro_Click" />
+     </div>
+ </asp:Panel>
+
+ <asp:Panel ID="PanelFiltro" runat="server">
+     <asp:Button ID="btnCerrar" runat="server" Text="Cerrar" CssClass="mx-auto my-3 btn btn-primary rounded-pill px-3" OnClick="btnCerrar_Click"/>
+     <asp:GridView ID="gdvFiltro" runat="server" CssClass="table">       
+     </asp:GridView>
+ </asp:Panel>
+
         </form>
       </div>
 </body>

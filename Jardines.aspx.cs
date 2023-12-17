@@ -19,6 +19,11 @@ namespace ICBFWEB2
                     ddlEstado.DataValueField = "idEstado";
                     ddlEstado.DataTextField = "nomEstado";
                     ddlEstado.DataBind();
+
+                    ddlFiltroJardin.DataSource = estDAO.consultarTodos();
+                    ddlFiltroJardin.DataValueField = "idEstado";
+                    ddlFiltroJardin.DataTextField = "nomEstado";
+                    ddlFiltroJardin.DataBind();
                     cargarTabla();
                 }
             }
@@ -41,6 +46,7 @@ namespace ICBFWEB2
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
+
             modelo.registro_jardin reg_jardin = new modelo.registro_jardin();
             modelo.RegistroJardinDAO registroJardinDAO = new modelo.RegistroJardinDAO();
 
@@ -48,10 +54,22 @@ namespace ICBFWEB2
             reg_jardin.direccionJardin = tbDireccion.Text;
             reg_jardin.fk_idEstado = int.Parse(ddlEstado.SelectedValue);
 
-            registroJardinDAO.registrar(reg_jardin);
-            cargarTabla();
-            panelFormulario.Visible = false;
-            PanelConsulta.Visible = true;
+            if (registroJardinDAO.validarNombreJardin(reg_jardin.nomJardin))
+            {
+                registroJardinDAO.registrar(reg_jardin);
+                cargarTabla();
+                panelFormulario.Visible = false;
+                PanelConsulta.Visible = true;
+            }
+            else
+            {
+                string scriptError = @"
+                        <script type='text/javascript'>
+                            alert('El nombre del jardin ya esta registrado')
+                        </script>";
+
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", scriptError, false);
+            }
         }
 
         protected void btnNuevo_Click(object sender, EventArgs e)
@@ -112,6 +130,38 @@ namespace ICBFWEB2
             tbIdJardin.Text = "";
             tbNombre.Text = "";
             tbDireccion.Text = "";
+        }
+
+
+        protected void btnFiltro_Click(object sender, EventArgs e)
+        {
+            panelFormulario.Visible = false;
+            PanelFormFiltro.Visible = true;
+        }
+
+        protected void btnCancelarFiltro_Click(object sender, EventArgs e)
+        {
+            PanelFormFiltro.Visible = false;
+            panelFormulario.Visible = true;
+            limpiarCajas();
+        }
+            
+        public void cargarFiltros(int jardin)
+        {
+            modelo.RegistroJardinDAO jardinDAO = new modelo.RegistroJardinDAO();
+            gdvFiltro.DataSource = jardinDAO.filtroJardines(jardin);
+            gdvFiltro.DataBind();
+        }
+        
+        protected void btnFilrar_Click(object sender, EventArgs e)
+        {
+            cargarFiltros(int.Parse(ddlFiltroJardin.SelectedValue));
+            PanelFiltro.Visible = true;
+        }
+
+        protected void btnCerrar_Click(object sender, EventArgs e)
+        {
+            PanelFiltro.Visible = false;
         }
     }
 }

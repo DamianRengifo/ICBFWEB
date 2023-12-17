@@ -89,6 +89,7 @@
     <Content Include="bootstrap-5.2.3-dist\js\bootstrap.esm.min.js" />
     <Content Include="bootstrap-5.2.3-dist\js\bootstrap.js" />
     <Content Include="bootstrap-5.2.3-dist\js\bootstrap.min.js" />
+    <Content Include="Login.aspx" />
     <Content Include="MadreComunitaria.aspx" />
     <Content Include="Niños.aspx" />
     <Content Include="PanelAcudiente.aspx" />
@@ -104,7 +105,7 @@
     <Content Include="Resources\el-alcaparro-2.jpg" />
     <Content Include="Resources\ICBF_logo.png" />
     <Content Include="Web.config" />
-    <Content Include="Login.aspx" />
+    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Acudiente.aspx.cs">
@@ -113,6 +114,13 @@
     </Compile>
     <Compile Include="Acudiente.aspx.designer.cs">
       <DependentUpon>Acudiente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="MadreComunitaria.aspx.cs">
       <DependentUpon>MadreComunitaria.aspx</DependentUpon>
@@ -173,13 +181,6 @@
       <DependentUpon>PanelMadre.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
     <Compile Include="RegistroAsistencia.aspx.cs">
       <DependentUpon>RegistroAsistencia.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -195,6 +196,13 @@
       <DependentUpon>ReportesAsistencia.aspx</DependentUpon>
     </Compile>
     <Compile Include="Utilidades.cs" />
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="bootstrap-5.2.3-dist\css\bootstrap-grid.css.map" />

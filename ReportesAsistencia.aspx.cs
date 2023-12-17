@@ -11,12 +11,21 @@ namespace ICBFWEB2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["idUsuario"] != null && Session["fk_idRol"].Equals(2)) {
+                modelo.RegistroAsistenciaDAO asistenciaDAO = new modelo.RegistroAsistenciaDAO();
+                gdvTablaEnfermedad.DataSource = asistenciaDAO.asistenciaEnfermedad();
+                gdvTablaEnfermedad.DataBind();
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
 
         protected void btnSemanal_Click(object sender, EventArgs e)
         {
             PanelSemanal.Visible = true;
+            Panel1.Visible = false;
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
@@ -38,9 +47,9 @@ namespace ICBFWEB2
 
         protected void btnEnfermedad_Click(object sender, EventArgs e)
         {
-            modelo.RegistroAsistenciaDAO asistenciaDAO = new modelo.RegistroAsistenciaDAO();
-            gdvTablaEnfermedad.DataSource = asistenciaDAO.asistenciaEnfermedad();
-            gdvTablaEnfermedad.DataBind();
+            
+            Panel1.Visible = true;
+            PanelSemanal.Visible = false;
         }
     }
 }

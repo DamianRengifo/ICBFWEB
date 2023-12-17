@@ -107,7 +107,7 @@ namespace ICBFWEB2
             niños.fechaNac =DateTime.Parse(txtFecNacimiento.Text);
             DateTime fechaNacimiento = DateTime.ParseExact(txtFecNacimiento.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture);
             if (
-                    niñosDao.validarExistenciaNiño(niños) && 
+                    
                     niñosDao.validarNombreNiño(niños.nombre, niños.numIdentificacion) &&
                     niñosDao.validarAños(fechaNacimiento)
                 ) 
@@ -119,10 +119,18 @@ namespace ICBFWEB2
             }
             else
             {
+                string mensajeError = "Error: ";
+
+                if (!niñosDao.validarNombreNiño(niños.nombre, niños.numIdentificacion))
+                    mensajeError += "El nombre del niño ya existe. ";
+
+                if (!niñosDao.validarAños(fechaNacimiento))
+                    mensajeError += "La edad del niño no es válida (debe ser menor o igual a 6 años). ";
+
                 string script = @"
-                        <script type='text/javascript'>
-                            alert('El niño ya esta registrado')
-                        </script>";
+            <script type='text/javascript'>
+                alert('" + mensajeError + @"');
+            </script>";
 
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", script, false);
 

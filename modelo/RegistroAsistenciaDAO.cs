@@ -31,15 +31,24 @@ namespace ICBFWEB2.modelo
             bd.SubmitChanges();
         }
 
-        public List<registro_asistencia> asistenciaSemanal(DateTime fechaInicio, DateTime fechaFinal) {
+        public List<registro_asistencia> asistenciaSemanal(DateTime fechaInicio, DateTime fechaFinal)
+        {
             var asistencia = (from j in bd.registro_asistencia
-                              where fechaInicio >= j.fechaAsistencia && fechaFinal <= j.fechaAsistencia
+                              where j.fechaAsistencia >= fechaInicio && j.fechaAsistencia <= fechaFinal
                               select j).ToList();
             return asistencia;
         }
 
-        public List<registro_asistencia> asistenciaEnfermedad() {
-            var resultado = (from j in bd.registro_asistencia where j.fk_idEstado == 2 select j).ToList();
+
+        public Object asistenciaEnfermedad() {
+            var resultado = (from j in bd.registro_asistencia where j.fk_idEstado == 4 
+                             select new { 
+                                Codigo = j.idRegAsistencia,
+                                FechaAsistencia = j.fechaAsistencia,
+                                Niño = j.niños.nombre,
+                                Estado = j.estados.nomEstado,
+                                MadreComunitaria = j.usuarios.nombre,
+                             } ).ToList();
             return resultado;
         }
 
